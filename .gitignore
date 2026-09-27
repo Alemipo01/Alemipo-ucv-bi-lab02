@@ -216,3 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Credenciales locales de Liquibase
+liquibase.properties
+liquibase.local.properties
+.env
+
+# Archivos temporales del laboratorio
+*.log
+.DS_Store
+Thumbs.db
