@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - include:
+      file: changelog/db.changelog-master.sql
+      relativeToChangelogFile: false
+
+  - include:
+      file: changelog/changes/002a_create_gold_schema.sql
+      relativeToChangelogFile: false
+
+  - include:
+      file: changelog/changes/003_create_dim_date.sql
+      relativeToChangelogFile: false
+
+  - include:
+      file: changelog/changes/004_create_dim_product.sql
+      relativeToChangelogFile: false
+
+  - include:
+      file: changelog/changes/005_create_dim_customer.sql
+      relativeToChangelogFile: false
+
+  - include:
+      file: changelog/changes/006_create_dim_store.sql
+      relativeToChangelogFile: false
+
+  - include:
+      file: changelog/changes/007_create_fact_sales.sql
+      relativeToChangelogFile: false
