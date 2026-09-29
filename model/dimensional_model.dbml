@@ -1,0 +1,62 @@
+// Laboratorio 04 - UCV Retail
+// Modelo lógico de ventas para la capa Gold.
+// No crea tablas físicas en Databricks.
+
+Table dim_date {
+  date_key int [pk]
+  full_date date
+  day int
+  month int
+  month_name varchar
+  quarter int
+  year int
+}
+
+Table dim_product {
+  product_key int [pk]
+  product_id int
+  product_name varchar
+  brand varchar
+  subcategory varchar
+  category varchar
+}
+
+Table dim_store {
+  store_key int [pk]
+  store_id int
+  store_name varchar
+  city varchar
+  region varchar
+  country varchar
+}
+
+Table dim_customer {
+  customer_key int [pk]
+  customer_id int
+  customer_name varchar
+  segment varchar
+  city varchar
+  country varchar
+}
+
+// Medidas de las líneas de venta.
+// El identificador de ticket necesario para calcular
+// el ticket promedio queda pendiente del diseño físico.
+
+Table fact_sales {
+  date_key int [not null]
+  product_key int [not null]
+  store_key int [not null]
+  customer_key int [not null]
+  quantity int
+  unit_price decimal
+  sales_amount decimal
+}
+
+// Muchas filas de ventas se relacionan con una fila
+// de cada dimensión.
+
+Ref: fact_sales.date_key > dim_date.date_key
+Ref: fact_sales.product_key > dim_product.product_key
+Ref: fact_sales.store_key > dim_store.store_key
+Ref: fact_sales.customer_key > dim_customer.customer_key
